@@ -1,5 +1,10 @@
 #!/bin/bash
 cargo b
+ext=$?
+echo "ext"
+if [[ $ext -ne 0 ]]; then
+    exit $ext
+fi
 sudo setcap cap_net_admin=eip target/debug/untitled
 target/debug/untitled &
 pid=$!
